@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "./js/components/Form";
 import TopMenu from "./js/components/TopMenu";
+import Product from './js/components/Products';
 
 import {
   BrowserRouter as Router,
@@ -11,10 +12,6 @@ import {
 export default function App() {
   function Home() {
     return <h2>Home</h2>
-  }
-
-  function Product() {
-    return <h2>Product</h2>
   }
 
   function About() {

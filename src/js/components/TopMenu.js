@@ -7,26 +7,6 @@ import '../../css/TopMenu.css';
 
 function TopMenu() {
   return (
-    // <Navbar bg="dark" variant="dark">
-    //   <Navbar.Brand href="#home">
-    //     <img
-    //       alt=""
-    //       src={Logo}
-    //       width="30"
-    //       height="30"
-    //       className="d-inline-block align-top"
-    //     />{' '}
-    //     HELLO
-    //   </Navbar.Brand>
-    //   <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    //   <Navbar.Collapse id="basic-navbar-nav">
-    //     <Nav className="ml-auto">
-    //       <Nav.Link><Link to="/">Home</Link></Nav.Link>
-    //       <Nav.Link><Link to="/product">Product</Link></Nav.Link>
-    //       <Nav.Link><Link to="/about">About</Link></Nav.Link>
-    //     </Nav>
-    //   </Navbar.Collapse>
-    // </Navbar>
     <Navbar bg="dark" expand="md" variant="dark">
       <Navbar.Brand href="#home">
         <img
