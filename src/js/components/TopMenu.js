@@ -7,7 +7,7 @@ import '../../css/TopMenu.css';
 
 function TopMenu() {
   return (
-    <Navbar bg="dark" expand="md" variant="dark">
+    <Navbar bg="dark" expand="md" variant="dark" fixed="top">
       <Navbar.Brand href="#home">
         <img
           alt=""
@@ -20,10 +20,10 @@ function TopMenu() {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto ml-auto">
-          <Nav.Link><Link to="/">Home</Link></Nav.Link>
-          <Nav.Link><Link to="/product">Product</Link></Nav.Link>
-          <Nav.Link><Link to="/about">About</Link></Nav.Link>
+        <Nav className="mr-auto">
+          <Link to="/">Home</Link>
+          <Link to="/product">Product</Link>
+          <Link to="/about">About</Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

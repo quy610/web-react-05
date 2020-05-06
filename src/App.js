@@ -1,7 +1,7 @@
 import React from "react";
-import Form from "./js/components/Form";
 import TopMenu from "./js/components/TopMenu";
 import Product from './js/components/Products';
+import FooterPage from './js/components/Footer';
 
 import {
   BrowserRouter as Router,
@@ -9,13 +9,17 @@ import {
   Route,
 } from "react-router-dom";
 
+const homeStyle = {
+  'margin-top': '5%' 
+};
+
 export default function App() {
   function Home() {
-    return <h2>Home</h2>
+    return <h2 style={homeStyle}>Home</h2>
   }
 
   function About() {
-    return <h2>About</h2>
+    return <h2 style={homeStyle}>About</h2>
   }
 
   return (
@@ -33,6 +37,7 @@ export default function App() {
             <Home />
           </Route>
         </Switch>
+        <FooterPage />
       </Router>
     </div>
   );
