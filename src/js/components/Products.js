@@ -1,47 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Container, Row, Card, Button, Col, Form, FormControl } from 'react-bootstrap';
+import axios from 'axios';
 
 import '../../css/Product.css';
 
 function Products() {
-  const [products, setproducts] = useState([
-    {
-      title: "product 1",
-      description: "product product product product"
-    },
-    {
-      title: "product 2",
-      description: "product product product product"
-    },
-    {
-      title: "product 3",
-      description: "product product product product"
-    },
-    {
-      title: "product 4",
-      description: "product product product product"
-    },
-    {
-      title: "product 5",
-      description: "product product product product"
-    },
-    {
-      title: "product 6",
-      description: "product product product product"
-    },
-    {
-      title: "product 7",
-      description: "product product product product"
-    },
-    {
-      title: "product 8",
-      description: "product product product product"
-    },
-    {
-      title: "product 8",
-      description: "product product product product"
-    }
-  ]);
+  const [products, setProducts] = useState([]);
+  const isMountedRef = useRef(null);
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    axios({
+      method: 'get',
+      url: 'https://server-restful-api-0610.herokuapp.com/books'
+    })
+    .then(res => {
+      if(isMountedRef.current){
+        setProducts(res.data);
+      }
+    })
+    .catch(err => {
+      console.log(err.response.data);
+    })
+    return () => isMountedRef.current = false;
+  });
 
   return (
     <Container id="product">

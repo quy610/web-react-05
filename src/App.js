@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 
 const homeStyle = {
-  'margin-top': '5%' 
+  'margin-top': '70px' 
 };
 
 export default function App() {
