@@ -38,9 +38,9 @@ function Products() {
               <Card.Img variant="top" src="https://loremflickr.com/320/240" />
               <Card.Body>
                 <Card.Title>{item.title}</Card.Title>
-                <Card.Text>
+                {/* <Card.Text>
                   {item.description}
-                </Card.Text>
+                </Card.Text> */}
                 <Button variant="primary" >Add To Cart</Button>
               </Card.Body>
             </Card>

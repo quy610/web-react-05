@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import TopMenu from "./js/components/TopMenu";
 import Product from './js/components/Products';
 import FooterPage from './js/components/Footer';
+import RegisterForm from './js/components/RegisterForm';
 
 import {
   BrowserRouter as Router,
@@ -14,6 +15,7 @@ const homeStyle = {
 };
 
 export default function App() {
+  // const [modalShow, setModalShow] = useState(true);
   function Home() {
     return <h2 style={homeStyle}>Home</h2>
   }
@@ -27,6 +29,9 @@ export default function App() {
       <Router>
         <TopMenu />
         <Switch>
+          <Route path="/register">
+            <RegisterForm show={true}/>
+          </Route>
           <Route path="/about">
             <About />
           </Route>
