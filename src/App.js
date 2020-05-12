@@ -15,7 +15,6 @@ const homeStyle = {
 };
 
 export default function App() {
-  // const [modalShow, setModalShow] = useState(true);
   function Home() {
     return <h2 style={homeStyle}>Home</h2>
   }
@@ -30,7 +29,7 @@ export default function App() {
         <TopMenu />
         <Switch>
           <Route path="/register">
-            <RegisterForm show={true}/>
+            <RegisterForm />
           </Route>
           <Route path="/about">
             <About />

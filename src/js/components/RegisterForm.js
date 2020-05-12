@@ -1,32 +1,81 @@
-import React from 'react'; 
-import { Modal, Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Form, Button, Alert, Container } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
+import CenteredModal from './CenteredModal';
 
-function RegisterForm() {
+import axios from 'axios';
+
+import '../../css/RegisterForm.css';
+
+
+const RegisterForm = (props) => {
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [notifi, setNotifi] = useState('');
+  const [modalShow, setModalShow] = useState(true);
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const infoUser = { email, name, password };
+    axios({
+      method: 'post',
+      url: 'https://server-restful-api-0610.herokuapp.com/api/user/register',
+      data: infoUser
+    })
+      .then(res => {
+        setNotifi('Success');
+        setModalShow(true);
+      })
+      .catch(err => {
+        setNotifi('Error');
+        setModalShow(true);
+      })
+  }
+
   return (
-    <Modal
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button>Close</Button>
-      </Modal.Footer>
-    </Modal>
+    <Container>
+      {notifi !== '' ? (
+        <CenteredModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          message={notifi}
+        ></CenteredModal>
+       ) : (<div />)}
+      <Form onSubmit={handleSubmit} className='register-form ml-auto mr-auto'>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            onChange={e => setEmail(e.target.value)} />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="name"
+            placeholder="Enter name"
+            onChange={e => setName(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            onChange={e => setPassword(e.target.value)}
+          />
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          Sign Up
+      </Button>
+      </Form>
+    </Container>
   );
 }
-
 
 export default RegisterForm;
