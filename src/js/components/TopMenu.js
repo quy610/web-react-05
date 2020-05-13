@@ -20,10 +20,11 @@ function TopMenu() {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
+        <Nav className="w-100">
           <Link to="/">Home</Link>
           <Link to="/product">Product</Link>
           <Link to="/about">About</Link>
+          <Link to="/login" className="ml-auto">Login</Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

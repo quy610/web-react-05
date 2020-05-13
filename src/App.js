@@ -3,6 +3,9 @@ import TopMenu from "./js/components/TopMenu";
 import Product from './js/components/Products';
 import FooterPage from './js/components/Footer';
 import RegisterForm from './js/components/RegisterForm';
+import LoginForm from './js/components/LoginForm';
+
+import './css/App.css';
 
 import {
   BrowserRouter as Router,
@@ -28,6 +31,9 @@ export default function App() {
       <Router>
         <TopMenu />
         <Switch>
+          <Route path="/login">
+            <LoginForm />
+          </Route>
           <Route path="/register">
             <RegisterForm />
           </Route>
@@ -41,7 +47,7 @@ export default function App() {
             <Home />
           </Route>
         </Switch>
-        <FooterPage />
+        {/* <FooterPage /> */}
       </Router>
     </div>
   );

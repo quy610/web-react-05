@@ -1,0 +1,13 @@
+.login-form {
+    width: 30%;
+    margin-top: 100px;
+}
+
+.login-form span:hover {
+    color: #1a1a1b;
+    cursor: pointer;
+}
+
+.login-form span {
+    color: #848594;
+}
