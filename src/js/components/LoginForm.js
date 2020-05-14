@@ -44,14 +44,14 @@ const LoginForm = (props) => {
 
   return (
     <Container>
-      {notifi !== '' ? (
+      {notifi !== '' && (
         <CenteredModal
           show={modalShow}
           onHide={() => setModalShow(false)}
           message={notifi}
           title={'Login Fail'}
         ></CenteredModal>
-      ) : (<div />)}
+      )}
       <Form onSubmit={handleSubmit} className='login-form ml-auto mr-auto'>
         <Form.Group controlId="formloginEmail">
           <Form.Label>Email</Form.Label>

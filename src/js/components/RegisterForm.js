@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Container, Alert } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import CenteredModal from './CenteredModal';
 
@@ -14,12 +14,16 @@ const RegisterForm = (props) => {
   const [password, setPassword] = useState('');
   const [notifi, setNotifi] = useState('');
   const [modalShow, setModalShow] = useState(false);
-  const [title, setTitle] = useState('')
+  const [title, setTitle] = useState('');
+  const [error, setError] = useState('');
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const infoUser = { email, name, password };
+    // validateForm(infoUser);
+    // if (error) return;
+
     axios({
       method: 'post',
       url: 'https://server-restful-api-0610.herokuapp.com/api/user/register',
@@ -37,16 +41,31 @@ const RegisterForm = (props) => {
       })
   }
 
+  const validateForm = (user) => {
+    if (user.email === '') {
+      setError('No email');
+    }
+
+    if (user.name === '') {
+      setName('No name');
+    }
+
+    if (user.password === '') {
+      setPassword('No password');
+    }
+  }
+
   return (
     <Container>
-      {notifi !== '' ? (
+      {notifi !== '' && (
         <CenteredModal
           show={modalShow}
           onHide={() => setModalShow(false)}
           message={notifi}
           title={title}
         ></CenteredModal>
-       ) : (<div />)}
+      )}
+      {error !== '' && (<Alert variant='danger'> {error} </Alert>)}
       <Form onSubmit={handleSubmit} className='register-form ml-auto mr-auto'>
         <Form.Group controlId="formRegisterEmail">
           <Form.Label>Your Email</Form.Label>
